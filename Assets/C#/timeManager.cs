@@ -8,15 +8,15 @@ public class TimeManager : MonoBehaviour
     public float maxTime = 10f; // Maximum time allowed for the level
     public Text timerText; // Text object to display the timer
 
-    private float currentTime; 
+    //private float currentTime; 
     private bool isTimerRunning = false;
 
     public float currentTime;
-    public static event TimerEnded OnTimerEnded;
+    //public static event TimerEnded OnTimerEnded;
 
     void Start()
     {
-        ResetTieme();
+        ResetTimer();
         StartTimer();
     }
 
@@ -31,7 +31,7 @@ public class TimeManager : MonoBehaviour
     public void ResetTimer()
     {
         currentTime = maxTime;
-        updateTimerUI();
+        UpdateTimerUI();
 
     }
 
@@ -46,6 +46,14 @@ public class TimeManager : MonoBehaviour
         isTimerRunning = false;
     }
 
+    void UpdateTimerUI()
+    {
+        if (timerText != null)
+        {
+            timerText.text = currentTime.ToString("F1") + "s";
+        }
+    }
+
     void UpdateTimer()
     {
         if (currentTime > 0)
@@ -58,16 +66,9 @@ public class TimeManager : MonoBehaviour
             currentTime = 0;
             isTimerRunning = false;
             UpdateTimerUI();
-            OnTimerEnd?.Invoke();
+            //OnTimerEnd?.Invoke();
             Debug.Log("Time is up!");
         }
     }
 
-    void UpdateTimerUI()
-    {
-        if (timerText != null)
-        {
-            timerText.text = currentTime.ToString("F1") + "s";
-        }
-    }
 }

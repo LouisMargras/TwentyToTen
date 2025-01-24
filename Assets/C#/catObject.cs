@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cat : MonoBehavior
+public class cat : MonoBehaviour
 {
     [Header("Bonus Settings")]
     public int healthBonus = 20;
@@ -25,14 +25,14 @@ public class cat : MonoBehavior
         Debug.Log("Cat Collected");
 
         //Apply health bonus
-        PlayerController playerController = player.GetComponent<playerController>();
+        PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerController != null)
         {
             playerController.TakeDamage(-healthBonus); // negative damage means healing
         }
 
         // Freeze time
-        StartCoroutine(FreezeTime()));
+        StartCoroutine(FreezeTime());
 
         foreach (string bonus in otherBonus)
         {
