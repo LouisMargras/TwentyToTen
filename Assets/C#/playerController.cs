@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehavior
+public class PlayerController : MonoBehaviour 
 {
+
 	[Header("Movement Settings")]
 	public float moveSpeed = 5f;
 
@@ -18,11 +19,15 @@ public class PlayerController : MonoBehavior
 	public LayerMask enemyLayer;
 
 	private Vector2 moveInput;
-	private Rigidbody enemy layer;
+	
+	private Rigidbody2D rb;
 
-		void Start()
+
+	Enemy enemy1 = new Enemy();
+
+	void Start()
 	{
-		rb = GetComponent<Rigibody2D>();
+		rb = GetComponent<Rigidbody2D>();
 		currentHealth = maxHealth;
 	}
 
@@ -33,16 +38,16 @@ public class PlayerController : MonoBehavior
 
 	void MovePlayer()
 	{
-		Vector2 moreVector = moveInput * moveSpeed * Time.deltaTime;
+		Vector2 moveVector = moveInput * moveSpeed * Time.deltaTime;
 		rb.MovePosition(rb.position + moveVector);
 	}
 
-	public void OnMove(InputAction.CallBackContext context)
-	{
-		moveInput = context.ReadValue<Vector2>();
-	}
+	public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
 
-	public void OnAttack()
+	public void OnAttack(InputAction.CallbackContext context)
 	{
 		if (context.performed)
 		{
@@ -56,7 +61,8 @@ public class PlayerController : MonoBehavior
 		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
 		foreach (Collider2D enemy in hitEnemies)
 		{
-			enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+			
+			enemy1.GetComponent<Enemy>().TakeDamage(attackDamage);
 		}
 	}
 
