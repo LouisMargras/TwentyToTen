@@ -2,13 +2,13 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "playerMovement",
-            "id": "19e5252c-91a8-4690-bbe5-280aa57531f7",
+            "name": "PlayerMovement",
+            "id": "714c339c-ce46-43ad-9c7f-0ea2c3e47453",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "OnMove",
                     "type": "Value",
-                    "id": "e6b01fdf-e2d1-4c67-8e69-10002eb93fca",
+                    "id": "cab46aab-d5fb-446b-ace5-738ff11ed97b",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -18,12 +18,45 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "7760d775-29e4-4dec-937a-59d9205ae28c",
-                    "path": "",
+                    "id": "deb86742-f055-413f-9824-9c84613427c0",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "OnMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f84f263-8506-452b-9f44-bb1696f8077e",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f50f347-2972-4abc-9e54-b556158bd203",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e83db4d2-1624-42c7-b04f-aa389be98767",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

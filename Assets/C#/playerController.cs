@@ -9,14 +9,14 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>(); //Lis l'entrée du joueur
+    }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //Vérifie qu'on récupère bien le Rigidbody2D
-    }
-	public void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>(); //Lis l'entrée du joueur
     }
 
     void FixedUpdate()

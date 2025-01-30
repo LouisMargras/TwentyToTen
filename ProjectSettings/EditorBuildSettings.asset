@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene2Desert.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: f4f9e81ada5511d40b3e3b7d336cadb8, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 50b5a51d0aea38f49bdacc6f1e2b27ec, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 799f83592a8a6c342b2844b0be4379c8, type: 3}
   m_UseUCBPForAssetBundles: 0

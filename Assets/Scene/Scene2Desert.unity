@@ -275,11 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456ac27824aea164ba3f17cdb884404a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  blackScreen: {fileID: 1613331548}
-  nextSceneName: 
-  isRotating: 0
-  targetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &110930690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10862,7 +10857,7 @@ GameObject:
   - component: {fileID: 1568214420}
   m_Layer: 0
   m_Name: Kai
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10983,7 +10978,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 5731981955572824522, guid: eb5d432eafe532d4aa9884531bafb697, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11022,7 +11017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 799f83592a8a6c342b2844b0be4379c8, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 81775597325f489459f5a7766d5f4163, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -11037,9 +11032,9 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: playerMovement
+  m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 110930686}
 --- !u!114 &1568214420
 MonoBehaviour:
   m_ObjectHideFlags: 0
