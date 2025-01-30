@@ -1,3 +1,4 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +29,7 @@ public class cat : MonoBehaviour
         PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerController != null)
         {
-            playerController.TakeDamage(-healthBonus); // negative damage means healing
+            playerController.TakeDamage(-healthBonus); //negative damage means healing
         }
 
         // Freeze time
@@ -57,3 +58,4 @@ public class cat : MonoBehaviour
         Debug.Log("Time unfrozen!");
     }
 }
+*/

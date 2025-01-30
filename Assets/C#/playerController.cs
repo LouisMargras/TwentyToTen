@@ -3,95 +3,105 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour
 {
+    [Header("Mouvement")]
+    public float moveSpeed = 5f;
+    private Vector2 moveInput;
+    private Rigidbody2D rb;
 
-	[Header("Movement Settings")]
-	public float moveSpeed = 5f;
-
-	[Header("health Settings")]
-	public int maxHealth = 100;
-	private int currentHealth;
-
-	[Header("Attack Settings")]
-	public float attackRange = 1.5f;
-	public int attackDamage = 10;
-	public LayerMask enemyLayer;
-
-	private Vector2 moveInput;
-	
-	private Rigidbody2D rb;
-
-
-	Enemy enemy1 = new Enemy();
-
-	void Start()
-	{
-		rb = GetComponent<Rigidbody2D>();
-		currentHealth = maxHealth;
-	}
-
-	void Update()
-	{
-		MovePlayer();
-	}
-
-	void MovePlayer()
-	{
-		Vector2 moveVector = moveInput * moveSpeed * Time.deltaTime;
-		rb.MovePosition(rb.position + moveVector);
-	}
-
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>(); //Vérifie qu'on récupère bien le Rigidbody2D
+    }
 	public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        moveInput = context.ReadValue<Vector2>(); //Lis l'entrée du joueur
     }
 
-	public void OnAttack(InputAction.CallbackContext context)
-	{
-		if (context.performed)
-		{
-			Attack();
-		}
+    void FixedUpdate()
 
-	}
+    {
+        MovePlayer();
+    }
 
-	void Attack()
-	{
-		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
-		foreach (Collider2D enemy in hitEnemies)
-		{
-			
-			enemy1.GetComponent<Enemy>().TakeDamage(attackDamage);
-		}
-	}
+    void MovePlayer()
+    {
+        rb.linearVelocity = moveInput * moveSpeed; //Applique la vitesse
+    }
+}
 
 
-	public void TakeDamage(int damage)
-	{
-		currentHealth -= damage;
+
+
+
+/*
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+public class PlayerController : MonoBehaviour
+{
+	 [Header("Movement Settings")]
+    public float moveSpeed = 5f;
+
+    [Header("Health Settings")]
+    public int maxHealth = 100;
+    private int currentHealth;
+
+    [Header("Attack Settings")]
+    public float attackRange = 1.5f;
+    public int attackDamage = 10;
+    public LayerMask enemyLayer;
+
+    private Vector2 moveInput;
+    private Rigidbody2D rb;
+
+
+    private PlayerControls controls;
+
+    void Awake()
+    {
+        controls = new PlayerControls(); //Active le système d'inputs
+    }
+
+    void OnEnable()
+    {
+        controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+        controls.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Disable();
+    }
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
+    {
+        rb.linearVelocity = moveInput * moveSpeed;
+    }
+	
+	void Die(){
 		if (currentHealth <= 0)
 		{
-			Die();
+			//Destroy(gameObject);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 	}
 
-	void Die()
-	{
-		Destroy(gameObject);
-	}
-
-	void OnDrawGizmosSelected()
-	{
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(transform.position, attackRange);
-	}
-
-	public void OnPick(InputAction.CallbackContext context)
-	{
-		if (context.performed)
-		{
-			Debug.Log("Pick");
-		}
-	}
+	public void TakeDamage(int damage)
+{
+    currentHealth -= damage;
+    if (currentHealth <= 0)
+    {
+        Die();
+    }
 }
+}
+*/
